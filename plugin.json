@@ -3,7 +3,6 @@
     "version" : "0.9.1",
     "meterVersionRequired" : "4.2.0-611",
     "unsupportedPlatforms" : [ ],
-    "os" : [ "Linux", "Windows", "SmartOS", "OS X" ],
     "tags" : "apache-http",
     "description" : "Collects metrics from a Apache HTTP Server",
     "icon" : "icon.png",
