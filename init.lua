@@ -1,12 +1,26 @@
+-- Copyright 2015 Boundary, Inc.
+--
+-- Licensed under the Apache License, Version 2.0 (the "License");
+-- you may not use this file except in compliance with the License.
+-- You may obtain a copy of the License at
+--
+--    http://www.apache.org/licenses/LICENSE-2.0
+--
+-- Unless required by applicable law or agreed to in writing, software
+-- distributed under the License is distributed on an "AS IS" BASIS,
+-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-- See the License for the specific language governing permissions and
+-- limitations under the License.
+
 local framework = require('framework')
 local url = require('url')
 local Plugin = framework.Plugin
 local WebRequestDataSource = framework.WebRequestDataSource
 local Accumulator = framework.Accumulator
-
 local gsplit = framework.string.gsplit
 local split = framework.string.split
 local auth = framework.util.auth
+local isHttpSuccess = framework.util.isHttpSuccess
 
 local params = framework.params
 
@@ -27,7 +41,11 @@ local data_source = WebRequestDataSource:new(options)
 local acc = Accumulator:new()
 
 local plugin = Plugin:new(params, data_source)
-function plugin:onParseValues(data, _)
+function plugin:onParseValues(data, extra)
+  if not isHttpSuccess(extra.status_code) then
+    self:emitEvent('error', ('Http Request returned %s instead of OK. Please check the Apache Webserver status page configuration.'):format(extra.status_code))
+    return
+  end
 
   -- Capture metrics
   local result = {}
@@ -75,3 +93,4 @@ function plugin:onParseValues(data, _)
   return result
 end
 plugin:run()
+
