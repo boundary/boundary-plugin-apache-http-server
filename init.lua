@@ -17,10 +17,10 @@ local url = require('url')
 local Plugin = framework.Plugin
 local WebRequestDataSource = framework.WebRequestDataSource
 local Accumulator = framework.Accumulator
-
 local gsplit = framework.string.gsplit
 local split = framework.string.split
 local auth = framework.util.auth
+local isHttpSuccess = framework.util.isHttpSuccess
 
 local params = framework.params
 
@@ -41,7 +41,11 @@ local data_source = WebRequestDataSource:new(options)
 local acc = Accumulator:new()
 
 local plugin = Plugin:new(params, data_source)
-function plugin:onParseValues(data, _)
+function plugin:onParseValues(data, extra)
+  if not isHttpSuccess(extra.status_code) then
+    self:emitEvent('error', ('Http Request returned %s instead of OK. Please check the Apache Webserver status page configuration.'):format(extra.status_code))
+    return
+  end
 
   -- Capture metrics
   local result = {}
