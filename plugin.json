@@ -2,7 +2,7 @@
     "name" : "Boundary Apache Http Plugin",
     "version" : "0.9.1",
     "meterVersionRequired" : "4.2.0-611",
-    "os" : [ "Linux", "Windows", "SmartOS", "OS X" ],
+    "unsupportedPlatforms" : [ ],
     "tags" : "apache-http",
     "description" : "Collects metrics from a Apache HTTP Server",
     "icon" : "icon.png",
