@@ -32,7 +32,8 @@
             "name" : "url",
             "description" : "The URL endpoint of where the Apache HTPP server statistics are hosted.",
             "type" : "string",
-            "default" : "http://localhost/server-status"
+            "default" : "http://localhost/server-status",
+	    "required" : true
         },
         {
             "title" : "Username",
@@ -49,7 +50,7 @@
         {
            "title" : "Poll Interval",
             "name" : "pollInterval",
-            "description" : "The Poll Interval in milliseconds. Ex. 1000",
+            "description" : "The Poll Interval in milliseconds to poll for metrics.",
             "type" : "number",
             "default" : 1000,
             "required" : false
