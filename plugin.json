@@ -32,7 +32,7 @@
             "name" : "url",
             "description" : "The URL endpoint of where the Apache HTPP server statistics are hosted.",
             "type" : "string",
-            "default" : "http://localhost/server-status",
+            "default" : "http://127.0.0.1/server-status",
 	    "required" : true
         },
         {
