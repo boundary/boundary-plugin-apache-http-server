@@ -10,10 +10,10 @@ Collects metrics from a Apache HTTP server instance. See video [walkthrough](htt
 
 #### Boundary Meter versions v4.2 or later 
 
-- To install new meter go to Settings->Installation or [see instructons](https://help.boundary.com/hc/en-us/sections/200634331-Installation).
-- To upgrade the meter to the latest version - [see instructons](https://help.boundary.com/hc/en-us/articles/201573102-Upgrading-the-Boundary-Meter).
+- To install new meter go to Settings->Installation or [see instructions](https://help.boundary.com/hc/en-us/sections/200634331-Installation).
+- To upgrade the meter to the latest version - [see instructions](https://help.boundary.com/hc/en-us/articles/201573102-Upgrading-the-Boundary-Meter).
 
-#### Boundary Meter Versions earlier than v4.2
+#### Boundary Meter versions earlier than v4.2
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
@@ -80,11 +80,11 @@ Tracks the following metrics for [apache](http://httpd.apache.org/)
 |Metric Name              |Description                                      |
 |:------------------------|:------------------------------------------------|
 |Apache Requests          |The number of Apache Accesses                    |
-|Apache Total Bytes       |bytes transferred                                |
-|Apache Bytes per Request |average bytes per request                        |
+|Apache Total Bytes       |Bytes transferred                                |
+|Apache Bytes per Request |Average bytes per request                        |
 |Apache CPU               |                                                 |
-|Apache Busy Workers      |the number of busy workers                       |
-|Apache Idle Workers      |the number of idle workers                       |
+|Apache Busy Workers      |The number of busy workers                       |
+|Apache Idle Workers      |The number of idle workers                       |
 |Apache busy to idle ratio|The ratio of busy workers / (busy + idle workers)|
 
 ### Dashboards
