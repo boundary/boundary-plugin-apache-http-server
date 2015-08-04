@@ -21,6 +21,7 @@ local gsplit = framework.string.gsplit
 local split = framework.string.split
 local auth = framework.util.auth
 local isHttpSuccess = framework.util.isHttpSuccess
+local ratio = framework.util.ratio
 
 local params = framework.params
 
@@ -68,26 +69,26 @@ function plugin:onParseValues(data, extra)
   result['APACHE_CPU'] = cpu_load
 
   -- Requests calculation
-  local requests = acc:accumulate('APACHE_REQUESTS', result['APACHE_REQUESTS']) 
+  local requests = acc('APACHE_REQUESTS', result['APACHE_REQUESTS']) 
   result['APACHE_REQUESTS'] = requests
 
   -- Total Bytes calculation
   -- Because of the interval cut off lines, on a really slow site you will get 0's
   -- the, use the previous value if that happens
   local last_total_bytes = acc:get('APACHE_BYTES')
-  local total_bytes = acc:accumulate('APACHE_BYTES', result['APACHE_BYTES'] * 1024)
+  local total_bytes = acc('APACHE_BYTES', result['APACHE_BYTES'] * 1024)
   if requests > 0 and total_bytes == 0 then
       total_bytes = last_total_bytes
   end
   result['APACHE_BYTES'] = total_bytes
 
   -- Total Bytes Per Request calculation
-  local bytes_per_req = (requests > 0) and (total_bytes / requests) or 0
+  local bytes_per_req = ratio(total_bytes, requests)
   result['APACHE_BYTES_PER_REQUEST'] = bytes_per_req
 
   -- Busy Ratio calculation
   local total_workers =  (result['APACHE_BUSY_WORKERS'] or 0) + (result['APACHE_IDLE_WORKERS'] or 0)
-  local busy_ratio = total_workers and result['APACHE_BUSY_WORKERS'] / total_workers or 0
+  local busy_ratio = ratio(result['APACHE_BUSY_WORKERS'], total_workers)
   result['APACHE_BUSY_RATIO'] = busy_ratio
 
   return result
