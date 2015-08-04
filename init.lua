@@ -68,14 +68,14 @@ function plugin:onParseValues(data, extra)
   result['APACHE_CPU'] = cpu_load
 
   -- Requests calculation
-  local requests = acc:accumulate('APACHE_REQUESTS', result['APACHE_REQUESTS']) 
+  local requests = acc('APACHE_REQUESTS', result['APACHE_REQUESTS']) 
   result['APACHE_REQUESTS'] = requests
 
   -- Total Bytes calculation
   -- Because of the interval cut off lines, on a really slow site you will get 0's
   -- the, use the previous value if that happens
   local last_total_bytes = acc:get('APACHE_BYTES')
-  local total_bytes = acc:accumulate('APACHE_BYTES', result['APACHE_BYTES'] * 1024)
+  local total_bytes = acc('APACHE_BYTES', result['APACHE_BYTES'] * 1024)
   if requests > 0 and total_bytes == 0 then
       total_bytes = last_total_bytes
   end
