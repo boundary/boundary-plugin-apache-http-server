@@ -21,6 +21,7 @@ local gsplit = framework.string.gsplit
 local split = framework.string.split
 local auth = framework.util.auth
 local isHttpSuccess = framework.util.isHttpSuccess
+local ratio = framework.util.ratio
 
 local params = framework.params
 
@@ -82,12 +83,12 @@ function plugin:onParseValues(data, extra)
   result['APACHE_BYTES'] = total_bytes
 
   -- Total Bytes Per Request calculation
-  local bytes_per_req = (requests > 0) and (total_bytes / requests) or 0
+  local bytes_per_req = ratio(total_bytes, requests)
   result['APACHE_BYTES_PER_REQUEST'] = bytes_per_req
 
   -- Busy Ratio calculation
   local total_workers =  (result['APACHE_BUSY_WORKERS'] or 0) + (result['APACHE_IDLE_WORKERS'] or 0)
-  local busy_ratio = total_workers and result['APACHE_BUSY_WORKERS'] / total_workers or 0
+  local busy_ratio = ratio(result['APACHE_BUSY_WORKERS'], total_workers)
   result['APACHE_BUSY_RATIO'] = busy_ratio
 
   return result
