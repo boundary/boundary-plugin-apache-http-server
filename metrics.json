@@ -2,7 +2,7 @@
   "APACHE_BUSY_RATIO": {
     "defaultAggregate": "AVG",
     "defaultResolutionMS": 1000,
-    "description": "The ratio of busy workers / (busy + idle workers)",
+    "description": "Ratio of busy workers / (busy + idle workers)",
     "displayName": "Apache busy to idle ratio",
     "displayNameShort": "apache-busy-ratio",
     "unit": "percent"
@@ -10,7 +10,7 @@
   "APACHE_BUSY_WORKERS": {
     "defaultAggregate": "AVG",
     "defaultResolutionMS": 1000,
-    "description": "the number of busy workers",
+    "description": "Rumber of busy workers",
     "displayName": "Apache Busy Workers",
     "displayNameShort": "apache-busy",
     "unit": "number"
@@ -18,7 +18,7 @@
   "APACHE_BYTES": {
     "defaultAggregate": "SUM",
     "defaultResolutionMS": 1000,
-    "description": "bytes transferred",
+    "description": "Total bytes transferred",
     "displayName": "Apache Total Bytes",
     "displayNameShort": "apache-bytes",
     "unit": "bytecount"
@@ -26,7 +26,7 @@
   "APACHE_BYTES_PER_REQUEST": {
     "defaultAggregate": "AVG",
     "defaultResolutionMS": 1000,
-    "description": "average bytes per request",
+    "description": "Average bytes per request",
     "displayName": "Apache Bytes per Request",
     "displayNameShort": "apache-bytes-per-req",
     "unit": "bytecount"
@@ -34,7 +34,7 @@
   "APACHE_CPU": {
     "defaultAggregate": "AVG",
     "defaultResolutionMS": 1000,
-    "description": "",
+    "description": "CPU used by all workers",
     "displayName": "Apache CPU",
     "displayNameShort": "apache-cpu",
     "unit": "percent"
@@ -42,7 +42,7 @@
   "APACHE_IDLE_WORKERS": {
     "defaultAggregate": "AVG",
     "defaultResolutionMS": 1000,
-    "description": "the number of idle workers",
+    "description": "Number of idle workers",
     "displayName": "Apache Idle Workers",
     "displayNameShort": "apache-idle",
     "unit": "number"
@@ -50,7 +50,7 @@
   "APACHE_REQUESTS": {
     "defaultAggregate": "SUM",
     "defaultResolutionMS": 1000,
-    "description": "The number of Apache Accesses",
+    "description": "Number of accesses",
     "displayName": "Apache Requests",
     "displayNameShort": "apache-reqs",
     "unit": "number"
