@@ -23,7 +23,15 @@ local auth = framework.util.auth
 local isHttpSuccess = framework.util.isHttpSuccess
 local ratio = framework.util.ratio
 
-local params = framework.params
+local json = require('json')
+local env = require('env')
+
+local params = env.get("TSP_PLUGIN_PARAMS")
+if(params == nil or  params == '') then
+   params = framework.params
+else
+   params = json.parse(params)
+end
 
 local options = url.parse(params.url)
 options.path = options.path .. '?auto' -- server-status?auto for text/plain output

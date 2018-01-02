@@ -1,6 +1,6 @@
 {
     "name" : "Boundary Apache Http Plugin",
-    "version" : "0.9.3",
+    "version" : "0.9.4",
     "meterVersionRequired" : "4.2.0-611",
     "unsupportedPlatforms" : [ ],
     "tags" : "apache-http",
@@ -11,7 +11,7 @@
     "postExtract" : "npm install",
     "postExtract_lua" : "",
     "ignore" : "node_modules",
-
+    "secure": true,
     "metrics" : [
         "APACHE_REQUESTS",
         "APACHE_BYTES",
